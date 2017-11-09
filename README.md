@@ -47,6 +47,18 @@ region = ap-northeast-1
 
   Edit their id in `./setup/create-instance.sh`
 
+1. ID and Password for Fusion workflow
+
+  Rename `secret.json.example` to `secret.json` and edit values.
+
+1. API Token for Chatwork
+
+  Rename `secret.json.example` to `secret.json` and edit values.
+
+1. ID of a room that is sent messages to
+
+  Edit their id in `./cron/birdmen_weekday_morning`
+
 ## Create a EC2 instance
 
 ```
