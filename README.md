@@ -64,3 +64,48 @@ region = ap-northeast-1
 ```
 ./setup/create-instance.sh
 ```
+
+# Debugging errors in running
+
+## The server is alive?
+### Get EC2 instance ID
+
+```sh
+aws ec2 describe-instances --profile birdmen | jq '.Reservations' | jq 'map(select(.Instances[0].Tags[0].Value == "birdmen"))' |jq '.[0].Instances[0].InstanceId'
+```
+
+### Get EC2 instance Status
+```sh
+aws ec2 describe-instance-status --profile birdmen --instance-ids i-00a1a71b600652de7
+```
+
+Change the instance ID to appropriate one.
+
+## The command was runned by the cron?
+
+### Login to the serever
+
+```sh
+ssh -i birdmen.pem ec2-user@ec2-13-115-38-17.ap-northeast-1.compute.amazonaws.com
+```
+
+Change the public DNS to appropriate one.
+
+### Look at the log of the cron
+
+```sh
+grep ec2-user /var/log/cron
+```
+
+## The command finished in success?
+
+```sh
+cat /tmp/birdmen.log
+cat /tmp/birdmen-error.log
+```
+
+## Try to run command
+
+```sh
+npm start
+```
