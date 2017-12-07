@@ -71,7 +71,7 @@ region = ap-northeast-1
 ### Get EC2 instance ID
 
 ```sh
-aws ec2 describe-instances --profile birdmen | jq '.Reservations' | jq 'map(select(.Instances[0].Tags[0].Value == "birdmen"))' |jq '.[0].Instances[0].InstanceId'
+aws ec2 describe-instances --profile birdmen | jq '.Reservations' | jq 'map(select(.Instances[0].Tags[0].Value == "birdmen"))' |jq '.[].Instances[].InstanceId'
 ```
 
 ### Get EC2 instance Status
