@@ -30,7 +30,6 @@ EOF
 scp -oStrictHostKeyChecking=no -i $PEM cron/birdmen_weekday_morning ec2-user@$HOST:.
 ssh  -oStrictHostKeyChecking=no -i $PEM ec2-user@$HOST << EOF
   chmod 644 birdmen_weekday_morning
-  chcon -t system_cron_spool_t birdmen_weekday_morning
   sudo chown root:root birdmen_weekday_morning
   sudo mv birdmen_weekday_morning /etc/cron.d/
 EOF
