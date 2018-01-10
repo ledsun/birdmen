@@ -16,4 +16,7 @@ sleep 60s
 echo ./setup/provisioning.sh $PUBLIC_DNS
 ./setup/provisioning.sh $PUBLIC_DNS
 
+echo If you want to delete the instance:
 echo aws ec2 terminate-instances --profile birdmen --instance-ids $INSTANCE_ID
+echo If you want to use the instance:
+echo ./setup/blue-green-deployment.sh $INSTANCE_ID

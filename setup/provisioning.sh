@@ -34,4 +34,5 @@ ssh  -oStrictHostKeyChecking=no -i $PEM ec2-user@$HOST << EOF
   sudo mv birdmen_weekday_morning /etc/cron.d/
 EOF
 
+echo If you want ssh login the instance:
 echo ssh -i $PEM ec2-user@$HOST
