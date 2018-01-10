@@ -11,7 +11,7 @@ PUBLIC_DNS=$(aws ec2 describe-instances --profile birdmen --instance-ids $INSTAN
 )
 
 echo waiting for starting the ssh server
-sleep 40s
+sleep 60s
 
 echo ./setup/provisioning.sh $PUBLIC_DNS
 ./setup/provisioning.sh $PUBLIC_DNS
