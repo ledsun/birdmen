@@ -9,7 +9,11 @@ const today = `${ date.getFullYear() }/${ date.getMonth() + 1 }/${ date.getDate(
 
   !(async() => {
     const result = await getSchedulesFromFusion(today)
-    const formatted = template(today)(result.map(s => [s.name.padEnd(12, '　'), s.schedules]))
+    const formatted = template(today)(
+      result
+        .filter(s => s.schedules.length)
+        .map(s => [s.name.padEnd(12, '　'), s.schedules])
+    )
 
     console.log(formatted)
     postChatworkMessage(secret.chatworkApiToken, roomId, formatted)
