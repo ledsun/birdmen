@@ -10,8 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.0.11",
+    "handlebars": "^4.0.12",
     "post-chatwork-message": "^1.0.0",
-    "puppeteer": "^0.12.0"
+    "puppeteer": "^1.12.1"
   }
 }
