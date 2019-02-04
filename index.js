@@ -1,3 +1,4 @@
+const JapaneseHolidays = require('japanese-holidays')
 const postChatworkMessage = require('post-chatwork-message')
 const getSchedulesFromFusion = require('./lib/get-schedule-from-fusion')
 const template = require('./lib/template')
@@ -5,7 +6,10 @@ const filter = require('./lib/filter')
 const secret = require('./secret.json')
 
 const roomId = process.argv[2] || '18211191'
+
 const date = new Date()
+if(JapaneseHolidays.isHoliday(date)) return
+
 const today = `${ date.getFullYear() }/${ date.getMonth() + 1 }/${ date.getDate() }`
 
   !(async () => {
