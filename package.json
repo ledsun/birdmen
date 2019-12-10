@@ -10,9 +10,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.0.12",
-    "japanese-holidays": "^1.0.6",
-    "post-chatwork-message": "^1.0.0",
-    "puppeteer": "^1.12.1"
+    "handlebars": "^4.5.3",
+    "japanese-holidays": "^1.0.9",
+    "npm-check-updates": "^3.2.2",
+    "post-chatwork-message": "^1.0.1",
+    "puppeteer": "^2.0.0"
   }
 }
