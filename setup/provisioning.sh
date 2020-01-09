@@ -19,7 +19,7 @@ EOF
 
 # Setup node app
 export RSYNC_RSH="ssh  -oStrictHostKeyChecking=no -i $PEM"
-rsync -rav --delete --exclude .git --exclude .gitignore --exclude node_modules --exclude README.md --exclude .DS_Store --exclude setup --exclude cron $(pwd)/ ec2-user@$HOST:birdmen
+rsync -rav --delete --exclude .git --exclude .gitignore --exclude node_modules --exclude README.md --exclude .DS_Store --exclude setup --exclude cron --exclude birdmen.pem --exclude secret.json.example $(pwd)/ ec2-user@$HOST:birdmen
 
 ssh  -oStrictHostKeyChecking=no -i $PEM ec2-user@$HOST << EOF
   cd birdmen
