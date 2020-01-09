@@ -5,7 +5,7 @@ const template = require('./lib/template')
 const filter = require('./lib/filter')
 const secret = require('./secret.json')
 
-const roomId = process.argv[2] || '18211191'
+const roomId = process.argv[2] || '173667622'
 
 const date = new Date()
 if(JapaneseHolidays.isHoliday(date)) return
