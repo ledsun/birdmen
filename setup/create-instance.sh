@@ -2,7 +2,7 @@
 # 注意1：awsコマンドとjqコマンドが必要です。
 # http://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-install-macos.html
 # https://github.com/stedolan/jq/wiki/Installation
-INSTANCE_ID=$(aws ec2 run-instances --image-id ami-0bc8ae3ec8e338cbc --count 1 --instance-type t3.nano --key-name birdmen --security-group-ids sg-20a1f244 --subnet-id subnet-998a7cee --profile birdmen |jq -r .Instances[].InstanceId
+INSTANCE_ID=$(aws ec2 run-instances --image-id ami-0ff2715db3ddfcaf5 --count 1 --instance-type t4g.nano --key-name birdmen --security-group-ids sg-20a1f244 --subnet-id subnet-998a7cee --profile birdmen |jq -r .Instances[].InstanceId
 )
 
 echo $INSTANCE_ID was created
