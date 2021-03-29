@@ -6,7 +6,7 @@ HOST=$1
 ssh -oStrictHostKeyChecking=no -i $PEM ec2-user@$HOST << EOF
   # Install Node.js.
   sudo yum update -y
-  curl --silent --location https://rpm.nodesource.com/setup_12.x | sudo bash -
+  curl --silent --location https://rpm.nodesource.com/setup_15.x | sudo bash -
   sudo yum -y install nodejs
 
   # Shared libraries for chronium
