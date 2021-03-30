@@ -4,7 +4,7 @@ MAILTO=""
 HOME=/home/ec2-user/birdmen
 # UTC time is that I subtract 9 hours from JST time.
 # For example 9 am at JST is 0 pm at UTC.
-0 0 * * 1-5 ec2-user npm start 33982143 >>/tmp/birdmen.log 2>>/tmp/birdmen-error.log
+0 0 * * 1-5 ec2-user npm start 33982143 true >>/tmp/birdmen.log 2>>/tmp/birdmen-error.log
 
 # For test
 # 30 5 * * 1-5 ec2-user npm start
