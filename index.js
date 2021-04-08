@@ -15,13 +15,9 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 !(async () => {
   const result = await getSchedulesFromFusion(today);
 
-  result
-    .filter((s) => s.schedules.length)
-    .map((s) =>
-      Object.assign(s, {
-        name: s.name.split("　")[0],
-      })
-    );
+  for (const s of result) {
+    s.name = s.name.split("　")[0];
+  }
 
   const formmattedForSlack = {
     blocks: [
