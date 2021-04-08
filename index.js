@@ -14,6 +14,13 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 
 !(async () => {
   const result = await getSchedulesFromFusion(today);
+  const text = `${result
+    .filter(({ schedules }) => schedules.length > 0)
+    .map(
+      ({ name, schedules }) =>
+        `${name.split("　")[0].padEnd(4, "　")}${schedules.join("\n　　　　")}`
+    )
+    .join("\n")}`;
 
   const formmattedForSlack = {
     blocks: [
@@ -21,15 +28,7 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `${result
-            .filter(({ schedules }) => schedules.length > 0)
-            .map(
-              ({ name, schedules }) =>
-                `${name.split("　")[0].padEnd(4, "　")}${schedules.join(
-                  "\n　　　　"
-                )}`
-            )
-            .join("\n")}`,
+          text,
         },
       },
     ],
