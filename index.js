@@ -1,6 +1,5 @@
 const JapaneseHolidays = require("japanese-holidays");
 const getSchedulesFromFusion = require("./lib/get-schedule-from-fusion");
-const filter = require("./lib/filter");
 const secret = require("./secret.json");
 const request = require("superagent");
 
@@ -15,7 +14,14 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 
 !(async () => {
   const result = await getSchedulesFromFusion(today);
-  filter(result);
+
+  result
+    .filter((s) => s.schedules.length)
+    .map((s) =>
+      Object.assign(s, {
+        name: s.name.split("　")[0],
+      })
+    );
 
   const formmattedForSlack = {
     blocks: [
