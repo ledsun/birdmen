@@ -15,10 +15,6 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 !(async () => {
   const result = await getSchedulesFromFusion(today);
 
-  for (const s of result) {
-    s.name = s.name.split("　")[0];
-  }
-
   const formmattedForSlack = {
     blocks: [
       {
@@ -29,7 +25,9 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
             .filter(({ schedules }) => schedules.length > 0)
             .map(
               ({ name, schedules }) =>
-                `${name.padEnd(4, "　")}${schedules.join("\n　　　　")}`
+                `${name.split("　")[0].padEnd(4, "　")}${schedules.join(
+                  "\n　　　　"
+                )}`
             )
             .join("\n")}`,
         },
