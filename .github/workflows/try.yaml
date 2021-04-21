@@ -1,5 +1,9 @@
 name: Try to npm start
 
+on:
+  push:
+    branches: [ main ]
+
 jobs:
   build:
 
