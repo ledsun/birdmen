@@ -2,7 +2,7 @@ name: Try to npm start
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
