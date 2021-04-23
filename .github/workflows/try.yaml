@@ -15,4 +15,12 @@ jobs:
       with:
         node-version: '14'
     - run: npm install
+    - shell: bash
+      env: 
+        FUSION_ID: ${{ secrets.FUSION_ID }}
+        FUSION_PASSWORD: ${{ secrets.FUSION_PASSWORD }}
+        SLACK_DEVELOPMENT_URL: ${{ secrets.SLACK_DEVELOPMENT_URL }}
+        SLACK_PRODUCTION_URL: ${{ secrets.SLACK_PRODUCTION_URL }}
+      run: |
+        echo "{\"fusionId\": \"$FUSION_ID\", \"fusionPassword\": \"$FUSION_PASSWORD\", \"slackDevelopmentUrl\": \"$SLACK_DEVELOPMENT_URL\", \"slackProductionUrl\": \"$SLACK_PRODUCTION_URL\"}" > secret.json
     - run: npm start
