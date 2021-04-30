@@ -2,7 +2,7 @@ name: Try to npm start
 
 on:
   schedule:
-    - cron: '33 * * * *'
+    - cron: '45 * * * *'
 
 jobs:
   build:
