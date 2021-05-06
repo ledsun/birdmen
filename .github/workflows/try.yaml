@@ -1,8 +1,8 @@
 name: Try to npm start
 
 on:
-  schedule:
-    - cron: '45 * * * *'
+  push:
+    branches: [ master ]
 
 jobs:
   build:
