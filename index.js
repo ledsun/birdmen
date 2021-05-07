@@ -8,9 +8,9 @@ const slackUrl = process.argv[2]
   : secret.slackDevelopmentUrl;
 
 const date = new Date();
-if (JapaneseHolidays.isHoliday(date)) return;
+if (JapaneseHolidays.isHolidayAt(date)) return;
 
-const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+const today = `${date.getFullYear()}/${JapaneseHolidays.getJMonth(date) + 1}/${date.getDate()}`;
 
 !(async () => {
   const result = await getSchedulesFromFusion(today);
