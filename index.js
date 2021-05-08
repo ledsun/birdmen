@@ -36,7 +36,8 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${JapaneseHolidays.g
 
   console.log(JSON.stringify(formmattedForSlack, null, 2));
 
-  request
+  if(text) {
+    request
     .post(slackUrl)
     .set("Content-type", "application/json")
     .send(formmattedForSlack)
@@ -45,4 +46,5 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${JapaneseHolidays.g
         console.log(err, res);
       }
     });
+  }
 })();
