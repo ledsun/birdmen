@@ -10,41 +10,48 @@ const slackUrl = process.argv[2]
 const date = new Date();
 if (JapaneseHolidays.isHolidayAt(date)) return;
 
-const today = `${date.getFullYear()}/${date.getMonth() + 1}/${JapaneseHolidays.getJDate(date)}`;
+const today = `${date.getFullYear()}/${
+  date.getMonth() + 1
+}/${JapaneseHolidays.getJDate(date)}`;
 
 !(async () => {
   const result = await getSchedulesFromFusion(today);
-  const schedules = result.filter(({ schedules }) => schedules.length > 0)
-  const text = `${schedules
-    .map(
-      ({ name, schedules }) =>
-        `${name.split("　")[0].padEnd(4, "　")}${schedules.join("\n　　　　")}`
-    )
-    .join("\n")}`;
+  const schedules = result.filter(({ schedules }) => schedules.length > 0);
 
-  const formmattedForSlack = {
-    blocks: [
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text,
+  if (schedules.length) {
+    const text = `${schedules
+      .map(
+        ({ name, schedules }) =>
+          `${name.split("　")[0].padEnd(4, "　")}${schedules.join(
+            "\n　　　　"
+          )}`
+      )
+      .join("\n")}`;
+
+    const formmattedForSlack = {
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text,
+          },
         },
-      },
-    ],
-  };
+      ],
+    };
 
-  console.log(JSON.stringify(formmattedForSlack, null, 2));
+    console.log(JSON.stringify(formmattedForSlack, null, 2));
 
-  if(text) {
     request
-    .post(slackUrl)
-    .set("Content-type", "application/json")
-    .send(formmattedForSlack)
-    .end((err, res) => {
-      if (err) {
-        console.log(err, res);
-      }
-    });
+      .post(slackUrl)
+      .set("Content-type", "application/json")
+      .send(formmattedForSlack)
+      .end((err, res) => {
+        if (err) {
+          console.log(err, res);
+        }
+      });
+  } else {
+    console.log(`There is no schedules at ${today}.`);
   }
 })();
