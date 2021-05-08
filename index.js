@@ -14,8 +14,8 @@ const today = `${date.getFullYear()}/${date.getMonth() + 1}/${JapaneseHolidays.g
 
 !(async () => {
   const result = await getSchedulesFromFusion(today);
-  const text = `${result
-    .filter(({ schedules }) => schedules.length > 0)
+  const schedules = result.filter(({ schedules }) => schedules.length > 0)
+  const text = `${schedules
     .map(
       ({ name, schedules }) =>
         `${name.split("　")[0].padEnd(4, "　")}${schedules.join("\n　　　　")}`
