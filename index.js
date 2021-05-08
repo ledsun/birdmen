@@ -10,7 +10,7 @@ const slackUrl = process.argv[2]
 const date = new Date();
 if (JapaneseHolidays.isHolidayAt(date)) return;
 
-const today = `${date.getFullYear()}/${JapaneseHolidays.getJMonth(date) + 1}/${date.getDate()}`;
+const today = `${date.getFullYear()}/${date.getMonth() + 1}/${JapaneseHolidays.getJDate(date)}`;
 
 !(async () => {
   const result = await getSchedulesFromFusion(today);
