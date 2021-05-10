@@ -1,4 +1,4 @@
-name: Try to npm start
+name: Give me a heads-up.
 
 on:
   schedule:
