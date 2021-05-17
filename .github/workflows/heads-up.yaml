@@ -2,7 +2,7 @@ name: Give me a heads-up.
 
 on:
   schedule:
-    - cron: '45 23 * * 1-5'
+    - cron: '45 23 * * 0-4'
 
 jobs:
   notice:
